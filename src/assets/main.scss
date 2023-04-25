@@ -1,0 +1,46 @@
+@import './base.scss';
+@import './vars.scss';
+@import './mixins.scss';
+
+#app {
+    flex: 1 1 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--site-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: var(--token-grids-desktop-offset);
+    padding-left: var(--token-grids-desktop-offset);
+
+    @include breakpoint(laptop) {
+        padding-right: var(--token-grids-laptop-offset);
+        padding-left: var(--token-grids-laptop-offset);
+    }
+
+    @include breakpoint(tablet) {
+        padding-right: var(--token-grids-tablet-offset);
+        padding-left: var(--token-grids-tablet-offset);
+    }
+
+    @include breakpoint(v-tablet) {
+        padding-right: var(--token-grids-v-tablet)-offset;
+        padding-left: var(--token-grids-v-tablet)-offset;
+    }
+
+    @include breakpoint(mobile) {
+        padding-right: var(--token-grids-mobile-offset);
+        padding-left: var(--token-grids-mobile-offset);
+    }
+
+}
+
+.main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}

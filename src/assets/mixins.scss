@@ -1,0 +1,157 @@
+$viewport-layouts: (
+    "default": (),
+    "laptop": ("max-width": var(--breakpoint-laptop)),
+    "tablet": ("max-width": var(--breakpoint-tablet)),
+    "v-tablet": ("max-width": var(--breakpoint-v-tablet)),
+    "mobile": ("max-width": var(--breakpoint-mobile))
+);
+
+$columns: 12;
+$gutter-width: 32px;
+$half-gutter-width: $gutter-width * 0.5;
+$gutter-compensation: -1 * $half-gutter-width;
+
+@mixin breakpoint($point) {
+    @if $point == laptop {
+        @media only screen and (max-width: var(--breakpoint-laptop)) { @content; }
+    }
+    @else if $point == tablet {
+        @media only screen and (max-width:var(--breakpoint-tablet)) { @content; }
+    }
+    @else if $point == v-tablet {
+        @media only screen and (max-width: var(--breakpoint-v-tablet)) { @content; }
+    }
+    @else if $point == mobile {
+        @media only screen and (max-width: var(--breakpoint-mobile)) { @content; }
+    }
+}
+
+
+@mixin grid-column () {
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding-right: $half-gutter-width;
+    padding-left: $half-gutter-width;
+
+    @include breakpoint(laptop) {
+        padding-left: calc(var(--token-grids-laptop-gutter)/2);
+        padding-right: calc(var(--token-grids-laptop-gutter)/2);
+    }
+
+    @include breakpoint(tablet) {
+        padding-left: calc(var(--token-grids-tablet-gutter)/2);
+        padding-right: calc(var(--token-grids-tablet-gutter)/2);
+    }
+
+    @include breakpoint(v-tablet) {
+        padding-left: calc(var(--token-grids-v-tablet-gutter)/2);
+        padding-right: calc(var(--token-grids-v-tablet-gutter)/2);
+    }
+
+    @include breakpoint(mobile) {
+        padding-left: calc(var(--token-grids-mobile-gutter)/2);
+        padding-right: calc(var(--token-grids-mobile-gutter)/2);
+    }
+}
+
+@mixin grid-row () {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: $gutter-compensation;
+    margin-left: $gutter-compensation;
+
+    @include breakpoint(laptop) {
+        margin-left: -calc(var(--token-grids-laptop-gutter) / 2);
+        margin-right: -calc(var(--token-grids-laptop-gutter) / 2);
+    }
+
+    @include breakpoint(tablet) {
+        margin-left: -calc(var(--token-grids-tablet-gutter) / 2);
+        margin-right: -calc(var(--token-grids-tablet-gutter) / 2);
+    }
+
+    @include breakpoint(v-tablet) {
+        margin-left: -calc(var(--token-grids-v-tablet-gutter) / 2);
+        margin-right: -calc(var(--token-grids-v-tablet-gutter) / 2);
+    }
+
+    @include breakpoint(mobile) {
+        margin-left: -calc(var(--token-grids-mobile-gutter) / 2);
+        margin-right: -calc(var(--token-grids-mobile-gutter) / 2);
+    }
+}
+
+
+@mixin grid-column-span ($columns-to-span:$columns, $total-columns-in-row:$columns) {
+    @if ($columns-to-span == auto) {
+        flex-grow: 1;
+        flex-basis: 0;
+        max-width: 100%;
+
+    } @else {
+        $span-percentage: calc($columns-to-span / $total-columns-in-row);
+
+        flex-basis: $span-percentage * 100%;
+        max-width: $span-percentage * 100%;
+    }
+}
+
+@mixin grid-column-offset ($columns-to-offset, $total-columns-in-row:$columns) {
+    margin-left: calc(($columns-to-offset / $total-columns-in-row) * 100%);
+}
+
+.col-default, .col-default-1, .col-default-2, .col-default-3, .col-default-4, .col-default-5, .col-default-6, .col-default-7, .col-default-8, .col-default-9, .col-default-10, .col-default-11, .col-default-12, .col-default-offset-1, .col-default-offset-2, .col-default-offset-3, .col-default-offset-4, .col-default-offset-5, .col-default-offset-6, .col-default-offset-7, .col-default-offset-8, .col-default-offset-9, .col-default-offset-10, .col-default-offset-11, .col-default-offset-12 {
+    @include grid-column;
+}
+
+
+
+@mixin example-viewport ($key) {
+    .hide-me--#{$key} {
+        display: none !important;
+    }
+
+    .show-me--#{$key} {
+        display: block !important;
+    }
+
+    .col-#{$key} {
+        & {
+            @include grid-column-span(auto);
+        }
+
+        @for $i from 1 through $columns {
+            &-#{$i} {
+                @include grid-column-span($i);
+            }
+
+            &-offset-#{$i} {
+                @include grid-column-offset($i);
+            }
+
+            &-offset-0 {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+@each $key, $value in $viewport-layouts {
+    @if ($key == default) {
+        @include example-viewport($key);
+    } @else {
+        $max-width: map-get($value, "max-width");
+        @media screen and (max-width: $max-width) {
+            @include example-viewport($key);
+        }
+    }
+}
+
+.row {
+    @include grid-row;
+    margin-top: -$gutter-width;
+
+    > [class*="col-"] {
+        margin-top: $gutter-width;
+    }
+}
