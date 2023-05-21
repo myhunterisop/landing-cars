@@ -1,13 +1,10 @@
 :root {
     --color-text: #ffffff;
     --color-background: #141414;
+    --brand-color: #DB3138;
     --site-width: 1920px;
 
-    //breakpoints
-    --breakpoint-laptop: 1679px; // laptop
-    --breakpoint-tablet: 1359px; // tablet
-    --breakpoint-v-tablet: 1023px; // v-tablet
-    --breakpoint-mobile: 599px; // mobile
+    
 
     //grid
     --token-grids-mobile-count: 2;
@@ -27,3 +24,9 @@
     --token-grids-v-tablet-offset: 40px;
     --token-grids-mobile-offset: 16px;
 }
+
+//breakpoints
+$breakpoint-laptop: 1679px;
+$breakpoint-tablet: 1359px; // tablet
+$breakpoint-v-tablet: 1023px; // v-tablet
+$breakpoint-mobile: 599px; // mobile

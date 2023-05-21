@@ -12,10 +12,16 @@ import { RouterLink } from 'vue-router'
 <style lang="scss">
 .navigation-main {
     &__link {
-        font-weight: 500;
-        font-size: 24px;
-        line-height: 120%;
+        font-size: 38px;
+        line-height: 1.2;
         color: #fff;
+        padding: 0 10px;
+        margin-right: 30px;
+        text-decoration: none;
+
+        &:last-child {
+            margin-right: 0;
+        }
     }
 }
 </style>

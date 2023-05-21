@@ -10,6 +10,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "swiper": "^9.2.4",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
@@ -21,6 +22,9 @@
     "eslint-plugin-vue": "^9.9.0",
     "prettier": "^2.8.4",
     "sass": "^1.62.0",
-    "vite": "^4.1.4"
+    "sharp": "^0.32.1",
+    "svgo": "^3.0.2",
+    "vite": "^4.1.4",
+    "vite-plugin-image-optimizer": "^1.1.4"
   }
 }

@@ -12,7 +12,6 @@ import { RouterLink } from 'vue-router'
 <style lang="scss">
 .navigation-mobile {
     &__link {
-        font-weight: 500;
         font-size: 24px;
         line-height: 120%;
         color: #fff;

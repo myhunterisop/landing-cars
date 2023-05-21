@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'ReformaGrotesk';
+    font-style: normal;
+    font-weight: 700;
+    src: url("/fonts/ReformaGroteskBold.woff") format("woff"),
+    url("/fonts/ReformaGroteskBold.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ReformaGrotesk';
+    font-style: normal;
+    font-weight: 600;
+    src: url("/fonts/ReformaGroteskDemi.woff") format("woff"),
+    url("/fonts/ReformaGroteskDemi.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ReformaGrotesk';
+    font-style: normal;
+    font-weight: 500;
+    src: url("/fonts/ReformaGroteskMedium.woff") format("woff"),
+    url("/fonts/ReformaGroteskMedium.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ReformaGrotesk';
+    font-style: normal;
+    font-weight: 300;
+    src: url("/fonts/ReformaGroteskLight.woff") format("woff"),
+    url("/fonts/ReformaGroteskLight.woff2") format("woff2");
+    font-display: swap;
+}

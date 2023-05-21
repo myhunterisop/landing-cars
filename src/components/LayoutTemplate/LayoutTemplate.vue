@@ -1,8 +1,10 @@
 <template>
     <div class="layout">
         <header-layout class="layout__header" />
-        <main class="main layout__container container">
-            <slot name="content" />
+        <main class="main layout__container">
+            <div class="container">
+                <slot name="content" />
+            </div>
         </main>
         <footer-layout class="layout__footer" />
     </div>

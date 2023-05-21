@@ -1,7 +1,7 @@
 <template>
     <header class="header">
         <div class="container">
-            <navigation-main />
+            <navigation-main class="header__navigation"/>
         </div>
         <!-- <navigation-mobile /> -->
     </header>
@@ -17,5 +17,9 @@ import NavigationMain from '@/components/NavigationMain/NavigationMain.vue'
     z-index: 3;
     top: 0;
     left: 0;
+
+    &__navigation {
+        margin-top: 40px;
+    }
 }
 </style>
