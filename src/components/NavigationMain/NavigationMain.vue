@@ -18,9 +18,14 @@ import { RouterLink } from 'vue-router'
         padding: 0 10px;
         margin-right: 30px;
         text-decoration: none;
+        transition: color var(--transition);
 
         &:last-child {
             margin-right: 0;
+        }
+
+        &:hover {
+            color: var(--brand-color);
         }
     }
 }

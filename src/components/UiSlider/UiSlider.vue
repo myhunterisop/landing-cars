@@ -5,12 +5,14 @@
                 <slot />
             </div>
         </div>
-        <button class="swiper-button-prev">
-            <ui-icon name="arrow-triangle" dir="left" />
-        </button>
-        <button class="swiper-button-next">
-            <ui-icon name="arrow-triangle" dir="right" />
-        </button>
+        <div class="swiper-navigation">
+            <button class="swiper-button-prev">
+                <ui-icon name="arrow-triangle" dir="left" />
+            </button>
+            <button class="swiper-button-next">
+                <ui-icon name="arrow-triangle" dir="right" />
+            </button>
+        </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-scrollbar"></div>
     </div>
@@ -62,7 +64,6 @@ const init = () => {
         slidesPerGroup: props.slidesPerGroup,
         spaceBetween: 24,
         breakpoints: {
-            // when window width is >= 640px
             640: {
                 slidesPerView: 3,
                 spaceBetween: 24
@@ -82,68 +83,79 @@ onMounted(() => {
 <style lang="scss">
 
 :root {
-    --swiper-navigation-size: 44px;
+    --swiper-navigation-size: 50px;
 }
-
 
 .swiper {
     overflow: visible;
 
+    .swiper-button-prev,
+    .swiper-button-next {
+        border: 3px solid var(--brand-color);
+        color: #fff;
+        width: var(--swiper-navigation-size);
+        height: var(--swiper-navigation-size);
+        background: none;
+        transform: rotate(45deg);
+        transition: background-color 0.7s;
+        top: calc(50% - var(--swiper-navigation-size) / 2);
+
+        path {
+            transition: fill 0.7s;
+        }
+
+        &:after {
+            display: none;
+        }
+
+        &:hover {
+            background-color: #d1d1d1;
+
+            path {
+                fill: var(--brand-color);
+            }
+        }
+    }
+
     .swiper-button-prev {
         left: -80px;
+
+        .ui-icon {
+            margin-top: -5px;
+            transform: rotate(225deg);
+        }
     }
 
     .swiper-button-next {
         right: -80px;
+
+        .ui-icon {
+            margin-left: -7px;
+            margin-bottom: -5px;
+            transform: rotate(45deg);
+        }
     }
 
     &--nav-bottom {
         .slider__wrapper {
             align-items: center;
         }
-
-
-        .slider__nav-btn {
-
-        }
-
-        // .swiper-button-prev {
-        //     left: -80px;
-        // }
-
-        // .swiper-button-next {
-        //     right: -80px;
-        // }
-    }
-}
-
-.swiper-button {
-    &-prev,
-    &-next {
-        border: 3px solid var(--brand-color);
-        color: #fff;
-        width: var(--swiper-navigation-size);
-        height: var(--swiper-navigation-size);
-        background: none;
-
-        &:after {
-            display: none;
-        }
     }
 
-    &-prev {
-        .ui-icon {
-            margin-right: -7px;
-        }
-    }
+    &-navigation {
+        @media screen and (max-width: 1480px) {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            min-height: calc(var(--swiper-navigation-size) + 20px);
+            margin-top: var(--swiper-navigation-size);
 
-    &-next {
-        .ui-icon {
-            margin-left: -7px;
-        }
-
-        &:after {
-            transform: rotate(180deg);
+            .swiper-button-next,
+            .swiper-button-prev {
+                position: relative;
+                left: 0;
+                margin: 0 20px;
+            }
         }
     }
 }
