@@ -13,6 +13,7 @@ import NavigationMain from '@/components/NavigationMain/NavigationMain.vue'
 </script>
 <style lang="scss">
 .header {
+    width: 100%;
     position: absolute;
     z-index: 3;
     top: 0;

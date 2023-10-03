@@ -2,8 +2,8 @@
     --color-text: #ffffff;
     --color-background: #141414;
     --brand-color: #DB3138;
-    --site-width: 1920px;
-
+    --site-width: 1296px;
+    --transition: .2s ease-in-out;
     
 
     //grid
@@ -18,10 +18,10 @@
     --token-grids-desktop-count: 12;
     --token-grids-desktop-gutter: 60px;
 
-    --token-grids-desktop-offset: 312px;
-    --token-grids-laptop-offset: 100px;
-    --token-grids-tablet-offset: 80px;
-    --token-grids-v-tablet-offset: 40px;
+    --token-grids-desktop-offset: 24px;
+    --token-grids-laptop-offset: 24px;
+    --token-grids-tablet-offset: 24px;
+    --token-grids-v-tablet-offset: 16px;
     --token-grids-mobile-offset: 16px;
 }
 

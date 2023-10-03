@@ -2,9 +2,7 @@
     <div class="layout">
         <header-layout class="layout__header" />
         <main class="main layout__container">
-            <div class="container">
-                <slot name="content" />
-            </div>
+            <slot name="content" />
         </main>
         <footer-layout class="layout__footer" />
     </div>
