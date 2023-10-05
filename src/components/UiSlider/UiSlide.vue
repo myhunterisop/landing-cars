@@ -5,10 +5,10 @@
                 <picture>
                     <source
                         v-if="webpExists"
-                        :srcset="webpExists ? webpImagePath : false"
+                        :srcset="webpImagePath"
                         type="image/webp"
                     />
-                    <img :src="img" :alt="alt"/>
+                    <img :src="imgSrc" :alt="alt" />
                 </picture>
                 <div class="slide__content-wrapper" v-if="content">
                     <div class="slide__content" v-html="content" />
@@ -19,42 +19,44 @@
 </template>
 
 <script setup>
-import { ref, computed, defineProps, onMounted } from 'vue'
+import { ref, defineProps, onMounted } from 'vue';
 
 const props = defineProps({
     content: {
         type: String,
-        default: ''
+        default: '',
     },
     img: {
-        type: String
+        type: String,
     },
     alt: {
         type: String,
-        default: 'image'
-    }
-})
+        default: 'image',
+    },
+});
 
 const webpExists = ref(false);
-const webpImagePath = computed(() => getWebpImagePath(props.img));
+const webpImagePath = ref('');
+const imgSrc = ref('');
 
-const getWebpImagePath = (jpgImagePath) => {
-    const webpImagePath = jpgImagePath.replace(/\.jpg$/, ".webp");
-    return webpImagePath;
+const checkWebpExists = async (webpPath) => {
+    try {
+        const response = await fetch(webpPath);
+        if (response.ok) {
+            webpExists.value = true;
+            webpImagePath.value = webpPath;
+        }
+    } catch (error) {
+        console.warn('An error occurred:', error);
+    }
 };
 
-onMounted(() => {
-    const webpPath = getWebpImagePath(props.img);
 
-    fetch(webpPath)
-        .then(response => {
-            if (response.ok) {
-                webpExists.value = true;
-            }
-        })
-        .catch(error => {
-            console.error('An error occurred:', error);
-        });
+onMounted(async () => {
+    const webpPath = props.img + '.webp';
+    await checkWebpExists(webpPath);
+    imgSrc.value = webpExists.value ? webpPath : props.img + '.jpg';
+    // console.clear();
 });
 </script>
 
@@ -101,3 +103,4 @@ onMounted(() => {
     }
 }
 </style>
+  
