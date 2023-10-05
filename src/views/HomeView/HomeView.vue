@@ -32,27 +32,34 @@
                 <presentation-stats />
                 
                 <ui-slider class="presentation__slider">
-                    <ui-slide content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas.">
-                        <img src="/images/2.jpg"/>
-                    </ui-slide>
-                    <ui-slide content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas.">
-                        <img src="/images/3.jpg"/>
-                    </ui-slide>
-                    <ui-slide content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas.">
-                        <img src="/images/4.jpg"/>
-                    </ui-slide>
-                    <ui-slide content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas.">
-                        <img src="/images/5.jpg"/>
-                    </ui-slide>
-                    <ui-slide content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas.">
-                        <img src="/images/6.jpg"/>
-                    </ui-slide>
-                    <ui-slide content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas.">
-                        <img src="/images/7.jpg"/>
-                    </ui-slide>
-                    <ui-slide content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas.">
-                        <img src="/images/8.jpg"/>
-                    </ui-slide>
+                    <ui-slide
+                        img="/images/2.jpg"
+                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
+                    />
+                    <ui-slide
+                        img="/images/3.jpg"
+                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
+                    />
+                    <ui-slide
+                        img="/images/4.jpg"
+                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
+                    />
+                    <ui-slide
+                        img="/images/5.jpg"
+                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
+                    />
+                    <ui-slide
+                        img="/images/6.jpg"
+                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
+                    />
+                    <ui-slide
+                        img="/images/7.jpg"
+                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
+                    />
+                    <ui-slide
+                        img="/images/8.jpg"
+                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
+                    />
                 </ui-slider>
             </div>
             <!-- <div class="row">

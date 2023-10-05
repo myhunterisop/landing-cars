@@ -89,49 +89,19 @@ onMounted(() => {
 .swiper {
     overflow: visible;
 
-    .swiper-button-prev {
-        left: -80px;
-    }
-
+    .swiper-button-prev,
     .swiper-button-next {
-        right: -80px;
-    }
-
-    &--nav-bottom {
-        .slider__wrapper {
-            align-items: center;
-        }
-    }
-
-    &-navigation {
-        @media screen and (max-width: 1480px) {
-            display: flex;
-            justify-content: flex-end;
-
-            .swiper-button-next,
-            .swiper-button-prev {
-                position: relative;
-                left: 0;
-                margin: 0 20px;
-            }
-        }
-    }
-}
-
-.swiper-button {
-    &-prev,
-    &-next {
         border: 3px solid var(--brand-color);
         color: #fff;
         width: var(--swiper-navigation-size);
         height: var(--swiper-navigation-size);
         background: none;
         transform: rotate(45deg);
-        transition: background-color .7s;
+        transition: background-color 0.7s;
         top: calc(50% - var(--swiper-navigation-size) / 2);
 
         path {
-            transition: fill .7s;
+            transition: fill 0.7s;
         }
 
         &:after {
@@ -147,18 +117,45 @@ onMounted(() => {
         }
     }
 
-    &-prev {
+    .swiper-button-prev {
+        left: -80px;
+
         .ui-icon {
             margin-top: -5px;
             transform: rotate(225deg);
         }
     }
 
-    &-next {
+    .swiper-button-next {
+        right: -80px;
+
         .ui-icon {
             margin-left: -7px;
             margin-bottom: -5px;
             transform: rotate(45deg);
+        }
+    }
+
+    &--nav-bottom {
+        .slider__wrapper {
+            align-items: center;
+        }
+    }
+
+    &-navigation {
+        @media screen and (max-width: 1480px) {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            min-height: calc(var(--swiper-navigation-size) + 20px);
+            margin-top: var(--swiper-navigation-size);
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                position: relative;
+                left: 0;
+                margin: 0 20px;
+            }
         }
     }
 }
