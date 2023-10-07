@@ -1,6 +1,10 @@
 <template>
     <div class="home-page">
         <section class="home-page__about">
+            <audio autoplay loop ref="audioElement">
+                <source src="/sound.mp3" type="audio/mpeg">
+            </audio>
+            <button @click="handleSoundToggle">{{ isPlaying ? 'Выключить звук' : 'Включить звук' }}</button>
             <video autoplay muted loop src="/mainpage-bg.mp4"></video>
             <div class="container">
                 <h1 class="home-page__about-title with-decor">Car Musc</h1>
@@ -27,40 +31,10 @@
                 </div>
             </div>
         </section>
-        <section class="home-page__presentation">
+        <section class="home-page__presentation presetation">
             <div class="container">
-                <presentation-stats />
-                
-                <ui-slider class="presentation__slider">
-                    <ui-slide
-                        img="/images/2"
-                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
-                    />
-                    <ui-slide
-                        img="/images/3"
-                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
-                    />
-                    <ui-slide
-                        img="/images/4"
-                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
-                    />
-                    <ui-slide
-                        img="/images/5"
-                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
-                    />
-                    <ui-slide
-                        img="/images/6"
-                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
-                    />
-                    <ui-slide
-                        img="/images/7"
-                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
-                    />
-                    <ui-slide
-                        img="/images/8"
-                        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repudiandae deleniti exercitationem maiores inventore molestias dolorem ad officiis modi voluptas."
-                    />
-                </ui-slider>
+                <presentation-stats class="presetation__stats" />
+                <presentation-slider class="presentation__slider" />
             </div>
             <!-- <div class="row">
                 <div class="col-default-5">
@@ -72,7 +46,26 @@
 </template>
 
 <script setup>
+
 import PresentationStats from './components/PresentationStats.vue'
+import PresentationSlider from './components/PresentationSlider.vue'
+import { toggleSound } from '@/helpers/toggleSound';
+
+import { ref, onMounted } from 'vue';
+
+const audioElement = ref(null);
+const isPlaying = ref(true);
+
+const handleSoundToggle = () => {
+    toggleSound(audioElement.value); // Вызов метода для управления звуком
+    isPlaying.value = !isPlaying.value
+};
+
+onMounted(() => {
+    if (audioElement.value) {
+        audioElement.value.volume = 0.05; // Устанавливаем громкость по умолчанию
+    }
+});
 
 </script>
 
@@ -156,13 +149,13 @@ import PresentationStats from './components/PresentationStats.vue'
     &__contacts-item {
         padding: 50px;
         width: 33.3333%;
-        border-top: 1px solid #898989;
-        border-bottom: 1px solid #898989;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
         display: flex;
         justify-content: center;
         
         & + & {
-            border-left: 1px solid #898989;
+            border-left: 1px solid var(--border-color);
         }
         
         @media screen and (max-width: $breakpoint-v-tablet) {
@@ -210,6 +203,12 @@ import PresentationStats from './components/PresentationStats.vue'
                 margin-top: 15px;
             }
         }
+    }
+}
+
+.home-page {
+    .presentation__slider {
+        margin-top: 180px;
     }
 }
 </style>
