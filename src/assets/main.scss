@@ -1,6 +1,6 @@
 @import './styles/reset.scss';
 @import './styles/base.scss';
-@import './styles/vars.scss';
+@import './styles/vars/css/vars.scss';
 @import './styles/mixins.scss';
 @import './styles/extends.scss';
 @import './styles/fonts.scss';
@@ -20,22 +20,22 @@
     padding-right: var(--token-grids-desktop-offset);
     padding-left: var(--token-grids-desktop-offset);
 
-    @media screen and (max-width: $breakpoint-laptop) {
+    @include breakpoint (laptop) {
         padding-right: var(--token-grids-laptop-offset);
         padding-left: var(--token-grids-laptop-offset);
     }
 
-    @media screen and (max-width: $breakpoint-tablet) {
+    @include breakpoint (tablet) {
         padding-right: var(--token-grids-tablet-offset);
         padding-left: var(--token-grids-tablet-offset);
     }
 
-    @media screen and (max-width: $breakpoint-v-tablet) {
+    @include breakpoint (v-tablet) {
         padding-right: var(--token-grids-v-tablet-offset);
         padding-left: var(--token-grids-v-tablet-offset);
     }
-    
-    @media screen and (max-width: $breakpoint-mobile) {
+
+    @include breakpoint (mobile) {
         padding-right: var(--token-grids-mobile-offset);
         padding-left: var(--token-grids-mobile-offset);
     }

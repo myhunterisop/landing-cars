@@ -46,7 +46,6 @@
 </template>
 
 <script setup>
-
 import PresentationStats from './components/PresentationStats.vue'
 import PresentationSlider from './components/PresentationSlider.vue'
 import { toggleSound } from '@/helpers/toggleSound';
@@ -70,8 +69,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@import '@/assets/styles/vars.scss';
-
 .home-page {
     &__about {
         position: relative;
@@ -140,7 +137,7 @@ onMounted(() => {
         display: flex;
         width: 100%;
 
-        @media screen and (max-width: $breakpoint-v-tablet) {
+        @include breakpoint (v-tablet) {
             flex-direction: column;
             margin-top: 48px;
         }
@@ -153,12 +150,12 @@ onMounted(() => {
         border-bottom: 1px solid var(--border-color);
         display: flex;
         justify-content: center;
-        
+
         & + & {
             border-left: 1px solid var(--border-color);
         }
-        
-        @media screen and (max-width: $breakpoint-v-tablet) {
+
+        @include breakpoint(v-tablet) {
             width: 100%;
             padding: 24px;
 

@@ -21,5 +21,15 @@ export default defineConfig({
                 manualChunks: () => 'main.js'
             }
         }
+    },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: `
+                    @import "@/assets/styles/vars/scss/vars.scss";
+                    @import "@/assets/styles/mixins/all-mixins.scss";
+                `
+            }
+        }
     }
 })
