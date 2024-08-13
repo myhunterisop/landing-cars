@@ -1,11 +1,11 @@
 @mixin hide-me($point) {
-  @include breakpoint($point) {
-    display: none !important;
-  }
+    @include breakpoint($point) {
+        display: none !important;
+    }
 }
 
 @mixin show-me($point, $display: inherit) {
-  @include breakpoint($point) {
-    display: $display !important;
-  }
+    @include breakpoint($point) {
+        display: $display !important;
+    }
 }

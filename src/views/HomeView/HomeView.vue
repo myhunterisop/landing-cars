@@ -46,6 +46,8 @@
 </template>
 
 <script setup>
+import { useStore } from '@/store'
+
 import PresentationStats from './components/PresentationStats.vue'
 import PresentationSlider from './components/PresentationSlider.vue'
 import { toggleSound } from '@/helpers/toggleSound';
@@ -55,14 +57,20 @@ import { ref, onMounted } from 'vue';
 const audioElement = ref(null);
 const isPlaying = ref(true);
 
+// const device = computed(() => {
+//     return useStore()?.device
+// })
+
+
 const handleSoundToggle = () => {
     toggleSound(audioElement.value); // Вызов метода для управления звуком
     isPlaying.value = !isPlaying.value
 };
 
+
 onMounted(() => {
     if (audioElement.value) {
-        audioElement.value.volume = 0.05; // Устанавливаем громкость по умолчанию
+        audioElement.value.volume = 0.5; // Устанавливаем громкость по умолчанию
     }
 });
 
